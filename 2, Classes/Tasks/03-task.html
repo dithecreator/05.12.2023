@@ -45,10 +45,10 @@
             #manufacturer = "";
             #html = "";
 
-            constructor(userImg, userMan, userHtml){
+            constructor(userImg, userMan){
                 this.#image = userImg;
                 this.#manufacturer = userMan;
-                this.#html = userHtml;
+                this.#html = `<img src="images/${this.image}" /><br />Производитель: ${this.manufacturer}<br />`;
             }
 
             get html(){
