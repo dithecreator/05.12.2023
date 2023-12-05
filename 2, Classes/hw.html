@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         Задание 1
+// Создать объект, описывающий автомобиль (производитель, модель, год выпуска, средняя скорость),
+//  и следующие функции для работы с этим объектом.
+// 1. Функция для вывода на экран информации об автомобиле.
+// 2. Функция для подсчета необходимого времени для преодоления 
+// переданного расстояния со средней скоростью. Учтите, что через каждые 4 часа дороги водителю необходимо делать перерыв на 1 час.
+
+
+        class Car{
+            constructor(manufacturer, model, year, speed, distance){
+this.manufacturer = manufacturer;
+this.model = model;
+this.year = year;
+this.speed = speed;
+this.distance = distance;
+            }
+
+         showInfo(element) {
+                element.insertAdjacentHTML("beforeend", `Производитель: ${this.manufacturer}<br />`);
+                element.insertAdjacentHTML("beforeend", `Модель: ${this.model}<br />`);
+                element.insertAdjacentHTML("beforeend", `Год выпуска: ${this.year}<br />`);
+                element.insertAdjacentHTML("beforeend", `Скорость: ${this.speed}<br />`);
+            };
+
+
+             Time(){
+           let time = this.distance / this.speed;
+           let  breaks = Math.floor(this.distance / 4);
+           let  breaktime = time + breaks;
+           let  totalbreak = breaks * 1;
+           let  result = time + totalbreak;
+              return result;
+
+        };
+    }
+
+
+    let car = new Car("Mercedes", "AMG 63", 2023, 150, 2000);
+    car.showInfo(document.body);
+
+
+
+
+
+
+
+//     Задание 2
+// Создать объект, хранящий в себе отдельно числитель и 
+// знаменатель дроби, и следующие функции для работы с этим объектом.
+// 1. Функция сложения 2-х объектов-дробей.
+// 2. Функция вычитания 2-х объектов-дробей.
+// 3. Функция умножения 2-х объектов-дробей.
+// 4. Функция деления 2-х объектов-дробей.
+// 5. Функция сокращения объекта-дроби.
+
+class Fraction{
+    constructor(numerator, denominator){
+    this.numerator = numerator;
+    this.denominator = denominator;
+    }
+
+    sum(fraction1){
+        let resultNumerator = this.numerator + fraction1.numerator;
+        let resultDenominator = this.denominator + fraction1.denominator;
+        let resultFraction = new Fraction(resultNumerator, resultDenominator);
+        return resultFraction;
+    };
+
+    diff(fraction1){
+let resultNumerator = this.numerator + fraction1.numerator;
+let resultDenominator = this.denominator + fraction1.denominator;
+let resultFraction = new Fraction(resultNumerator, resultDenominator);
+return resultFraction;
+    };
+
+
+    multiply(fraction1){
+        let resultNumerator = this.numerator * fraction1.numerator;
+        let resultDenominator = this.denominator * fraction1.denominator;
+        let resultFraction = new Fraction(resultNumerator, resultDenominator);
+        return resultFraction;
+    };
+
+    division(fraction1){
+        let resultNumerator = this.numerator / fraction1.numerator;
+        let resultDenominator = this.denominator / fraction1/denominator;
+        let resultFraction = new Fraction(resultNumerator, resultDenominator);
+        return resultFraction;
+    };
+
+    greatestDivisor(a, b){
+        if (b === 0) {
+        return a;
+    }
+     else {
+        return this.greatestDivisor(b, a % b);
+    }
+    };
+
+    simplify(){
+        let gcd = this.greatestDivisor(this.numerator, this.denominator);
+        this.numerator /= gcd;
+        this.denominator /= gcd; 
+    };
+
+}
+
+
+
+
+// Задание 3
+// Создать объект, описывающий время (часы, минуты, секунды), и следующие функции для работы с этим объектом.
+// 1. Функция вывода времени на экран.
+// 2. Функция изменения времени на переданное количество
+// секунд.
+// 3. Функция изменения времени на переданное количество минут.
+// 4. Функция изменения времени на переданное количество часов.
+// Учтите, что в последних 3-х функциях, при изменении одной части времени,
+//  может измениться и другая. Например: если ко времени «20:30:45» добавить 30 секунд, то должно получиться «20:31:15», а не «20:30:75».
+
+class Time{
+    constructor(hours, minutes, seconds){
+this.hours = hours;
+this.minutes = minutes;
+this.seconds = seconds;
+
+    }
+showTime(){
+    element.insertAdjacentHTML("beforeend", `Скорость: ${this.hours}<br />`);
+    element.insertAdjacentHTML("beforeend", `Скорость: ${this.minutes}<br />`);
+    element.insertAdjacentHTML("beforeend", `Скорость: ${this.seconds}<br />`);
+};
+
+addSeconds(extraSeconds){
+this.seconds += extraSeconds;
+while(this.seconds > 59){
+    this.minutes += 1;
+    this.seconds -= 60;
+}
+
+while(this.minutes > 59){
+    this.hours += 1;
+    this.minutes -= 60;
+}
+let result = new Time(hours, minutes, seconds);
+return result;
+
+};
+
+addMinutes(extraMinutes){
+    this.minutes += extraMinutes;
+    while(this.minutes > 59){
+        this.hours += 1;
+        this.minutes -= 60;
+    }
+
+    let result = new Time(hours, minutes, seconds);
+    return result;
+};
+
+addHours(extraHours){
+    this.hours += extraHours;
+    if(this.hours >= 24){
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0;
+    }
+
+    let result = new Time(hours, minutes, seconds);
+    return result;
+};
+
+
+
+
+}
+
+
+
+
+//1
+   // let car = new Car("Mercedes", "AMG 63", "2023", 120, 200);
+    car.showInfo(document.body);
+    let info = car.getTime();
+    document.write(`Время в пути с учетом перерывов: ${info} часов`);
+
+    //2
+
+let fraction = new Fraction(7, 11);
+let resultFraction = fraction.sum(new Fraction(7, 2));
+    </script>
+</body>
+</html>
